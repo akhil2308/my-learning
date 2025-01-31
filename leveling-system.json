@@ -1,0 +1,421 @@
+[
+  {
+    "level": 1,
+    "name": "Foundational Concepts",
+    "description": "Focus on core programming concepts including strings, arrays, hash maps, math, and basic recursion.",
+    "topics": [
+      {
+        "name": "Strings",
+        "problems": [
+          {"title": "Valid Palindrome", "leetcode_id": 125, "difficulty": "Easy"},
+          {"title": "Longest Common Prefix", "leetcode_id": 14, "difficulty": "Easy"},
+          {"title": "Longest Substring Without Repeating Characters", "leetcode_id": 3, "difficulty": "Medium"},
+          {"title": "Longest Palindromic Substring", "leetcode_id": 5, "difficulty": "Medium"},
+          {"title": "Group Anagrams", "leetcode_id": 49, "difficulty": "Medium"},
+          {"title": "Text Justification", "leetcode_id": 68, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Reverse Words in a String", "leetcode_id": 151, "difficulty": "Medium"},
+          {"title": "Decode String", "leetcode_id": 394, "difficulty": "Medium"},
+          {"title": "Repeated Substring Pattern", "leetcode_id": 459, "difficulty": "Easy"},
+          {"title": "Minimum Window Substring", "leetcode_id": 76, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Arrays/Lists",
+        "problems": [
+          {"title": "Remove Duplicates from Sorted Array", "leetcode_id": 26, "difficulty": "Easy"},
+          {"title": "Remove Element", "leetcode_id": 27, "difficulty": "Easy"},
+          {"title": "3Sum", "leetcode_id": 15, "difficulty": "Medium"},
+          {"title": "Container With Most Water", "leetcode_id": 11, "difficulty": "Medium"},
+          {"title": "Product of Array Except Self", "leetcode_id": 238, "difficulty": "Medium"},
+          {"title": "Trapping Rain Water", "leetcode_id": 42, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Rotate Array", "leetcode_id": 189, "difficulty": "Medium"},
+          {"title": "Merge Intervals", "leetcode_id": 56, "difficulty": "Medium"},
+          {"title": "Spiral Matrix", "leetcode_id": 54, "difficulty": "Medium"},
+          {"title": "Next Permutation", "leetcode_id": 31, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Hash Maps/Dicts",
+        "problems": [
+          {"title": "Two Sum", "leetcode_id": 1, "difficulty": "Easy"},
+          {"title": "Valid Anagram", "leetcode_id": 242, "difficulty": "Easy"},
+          {"title": "Top K Frequent Elements", "leetcode_id": 347, "difficulty": "Medium"},
+          {"title": "Longest Consecutive Sequence", "leetcode_id": 128, "difficulty": "Medium"},
+          {"title": "Insert Delete GetRandom O(1)", "leetcode_id": 380, "difficulty": "Medium"},
+          {"title": "LFU Cache", "leetcode_id": 460, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Valid Sudoku", "leetcode_id": 36, "difficulty": "Medium"},
+          {"title": "Sort Characters By Frequency", "leetcode_id": 451, "difficulty": "Medium"},
+          {"title": "Contiguous Array", "leetcode_id": 525, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Math",
+        "problems": [
+          {"title": "Fizz Buzz", "leetcode_id": 412, "difficulty": "Easy"},
+          {"title": "Reverse Integer", "leetcode_id": 7, "difficulty": "Easy"},
+          {"title": "Pow(x, n)", "leetcode_id": 50, "difficulty": "Medium"},
+          {"title": "Multiply Strings", "leetcode_id": 43, "difficulty": "Medium"},
+          {"title": "Happy Number", "leetcode_id": 202, "difficulty": "Medium"},
+          {"title": "Integer to English Words", "leetcode_id": 273, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Palindrome Number", "leetcode_id": 9, "difficulty": "Easy"},
+          {"title": "Roman to Integer", "leetcode_id": 13, "difficulty": "Easy"},
+          {"title": "Count Primes", "leetcode_id": 204, "difficulty": "Medium"},
+          {"title": "Max Points on a Line", "leetcode_id": 149, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Basic Recursion",
+        "problems": [
+          {"title": "Climbing Stairs", "leetcode_id": 70, "difficulty": "Easy"},
+          {"title": "Fibonacci Number", "leetcode_id": 509, "difficulty": "Easy"},
+          {"title": "Generate Parentheses", "leetcode_id": 22, "difficulty": "Medium"},
+          {"title": "Permutations", "leetcode_id": 46, "difficulty": "Medium"},
+          {"title": "Combination Sum", "leetcode_id": 39, "difficulty": "Medium"},
+          {"title": "N-Queens", "leetcode_id": 51, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Swap Nodes in Pairs", "leetcode_id": 24, "difficulty": "Medium"},
+          {"title": "K-th Symbol in Grammar", "leetcode_id": 779, "difficulty": "Medium"},
+          {"title": "Partition to K Equal Sum Subsets", "leetcode_id": 698, "difficulty": "Medium"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of core problems (24/30) to unlock Level 2."
+  },
+  {
+    "level": 2,
+    "name": "Problem-Solving Techniques",
+    "description": "Master essential problem-solving patterns including two pointers, sliding window, and prefix sum.",
+    "topics": [
+      {
+        "name": "Two Pointers",
+        "problems": [
+          {"title": "Valid Palindrome", "leetcode_id": 125, "difficulty": "Easy"},
+          {"title": "Remove Duplicates from Sorted Array", "leetcode_id": 26, "difficulty": "Easy"},
+          {"title": "3Sum", "leetcode_id": 15, "difficulty": "Medium"},
+          {"title": "Container With Most Water", "leetcode_id": 11, "difficulty": "Medium"},
+          {"title": "Trapping Rain Water", "leetcode_id": 42, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Merge Sorted Array", "leetcode_id": 88, "difficulty": "Easy"},
+          {"title": "Move Zeroes", "leetcode_id": 283, "difficulty": "Easy"},
+          {"title": "Longest Mountain in Array", "leetcode_id": 845, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Sliding Window",
+        "problems": [
+          {"title": "Maximum Average Subarray I", "leetcode_id": 643, "difficulty": "Easy"},
+          {"title": "Longest Substring Without Repeating Characters", "leetcode_id": 3, "difficulty": "Medium"},
+          {"title": "Permutation in String", "leetcode_id": 567, "difficulty": "Medium"},
+          {"title": "Longest Repeating Character Replacement", "leetcode_id": 424, "difficulty": "Medium"},
+          {"title": "Minimum Window Substring", "leetcode_id": 76, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Minimum Size Subarray Sum", "leetcode_id": 209, "difficulty": "Medium"},
+          {"title": "Max Consecutive Ones III", "leetcode_id": 1004, "difficulty": "Medium"},
+          {"title": "Longest Subarray of 1's After Deleting One Element", "leetcode_id": 1493, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Prefix Sum",
+        "problems": [
+          {"title": "Range Sum Query - Immutable", "leetcode_id": 303, "difficulty": "Easy"},
+          {"title": "Product of Array Except Self", "leetcode_id": 238, "difficulty": "Medium"},
+          {"title": "Subarray Sum Equals K", "leetcode_id": 560, "difficulty": "Medium"},
+          {"title": "Count Number of Nice Subarrays", "leetcode_id": 1248, "difficulty": "Medium"}
+        ],
+        "additional_problems": [
+          {"title": "Maximum Size Subarray Sum Equals k", "leetcode_id": 325, "difficulty": "Medium"},
+          {"title": "Continuous Subarray Sum", "leetcode_id": 523, "difficulty": "Medium"},
+          {"title": "Number of Sub-arrays With Odd Sum", "leetcode_id": 1524, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Frequency Counting",
+        "problems": [
+          {"title": "Valid Anagram", "leetcode_id": 242, "difficulty": "Easy"},
+          {"title": "First Unique Character in a String", "leetcode_id": 387, "difficulty": "Easy"},
+          {"title": "Sort Characters By Frequency", "leetcode_id": 451, "difficulty": "Medium"},
+          {"title": "Top K Frequent Elements", "leetcode_id": 347, "difficulty": "Medium"},
+          {"title": "Minimum Window Substring", "leetcode_id": 76, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Word Pattern", "leetcode_id": 290, "difficulty": "Easy"},
+          {"title": "Partition Labels", "leetcode_id": 763, "difficulty": "Medium"},
+          {"title": "Array of Doubled Pairs", "leetcode_id": 954, "difficulty": "Medium"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of core problems (15/19) to unlock Level 3."
+  },
+  {
+    "level": 3,
+    "name": "Easy Data Structures & Algorithms",
+    "description": "Introduction to fundamental data structures and basic sorting algorithms.",
+    "topics": [
+      {
+        "name": "Linked Lists",
+        "problems": [
+          {"title": "Reverse Linked List", "leetcode_id": 206, "difficulty": "Easy"},
+          {"title": "Merge Two Sorted Lists", "leetcode_id": 21, "difficulty": "Easy"},
+          {"title": "Remove Nth Node From End of List", "leetcode_id": 19, "difficulty": "Medium"},
+          {"title": "Add Two Numbers", "leetcode_id": 2, "difficulty": "Medium"},
+          {"title": "Copy List with Random Pointer", "leetcode_id": 138, "difficulty": "Medium"},
+          {"title": "Merge k Sorted Lists", "leetcode_id": 23, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Linked List Cycle", "leetcode_id": 141, "difficulty": "Easy"},
+          {"title": "Odd Even Linked List", "leetcode_id": 328, "difficulty": "Medium"},
+          {"title": "Flatten a Multilevel Doubly Linked List", "leetcode_id": 430, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Stacks",
+        "problems": [
+          {"title": "Valid Parentheses", "leetcode_id": 20, "difficulty": "Easy"},
+          {"title": "Min Stack", "leetcode_id": 155, "difficulty": "Medium"},
+          {"title": "Implement Stack Using Queues", "leetcode_id": 225, "difficulty": "Easy"},
+          {"title": "Daily Temperatures", "leetcode_id": 739, "difficulty": "Medium"},
+          {"title": "Largest Rectangle in Histogram", "leetcode_id": 84, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Remove K Digits", "leetcode_id": 402, "difficulty": "Medium"},
+          {"title": "Simplify Path", "leetcode_id": 71, "difficulty": "Medium"},
+          {"title": "Remove All Adjacent Duplicates in String II", "leetcode_id": 1209, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Queues",
+        "problems": [
+          {"title": "Implement Queue Using Stacks", "leetcode_id": 232, "difficulty": "Easy"},
+          {"title": "Number of Recent Calls", "leetcode_id": 933, "difficulty": "Easy"},
+          {"title": "Open the Lock", "leetcode_id": 752, "difficulty": "Medium"},
+          {"title": "Design Circular Queue", "leetcode_id": 622, "difficulty": "Medium"}
+        ],
+        "additional_problems": [
+          {"title": "Design Circular Deque", "leetcode_id": 641, "difficulty": "Medium"},
+          {"title": "Task Scheduler", "leetcode_id": 621, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Binary Trees",
+        "problems": [
+          {"title": "Invert Binary Tree", "leetcode_id": 226, "difficulty": "Easy"},
+          {"title": "Maximum Depth of Binary Tree", "leetcode_id": 104, "difficulty": "Easy"},
+          {"title": "Symmetric Tree", "leetcode_id": 101, "difficulty": "Easy"},
+          {"title": "Validate Binary Search Tree", "leetcode_id": 98, "difficulty": "Medium"},
+          {"title": "Binary Tree Level Order Traversal", "leetcode_id": 102, "difficulty": "Medium"},
+          {"title": "Serialize and Deserialize Binary Tree", "leetcode_id": 297, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Binary Tree Preorder Traversal", "leetcode_id": 144, "difficulty": "Easy"},
+          {"title": "Kth Smallest Element in a BST", "leetcode_id": 230, "difficulty": "Medium"},
+          {"title": "House Robber III", "leetcode_id": 337, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Basic Sorting",
+        "problems": [
+          {"title": "Merge Intervals", "leetcode_id": 56, "difficulty": "Medium"},
+          {"title": "Sort Colors", "leetcode_id": 75, "difficulty": "Medium"},
+          {"title": "Meeting Rooms", "leetcode_id": 252, "difficulty": "Easy"},
+          {"title": "Kth Largest Element in an Array", "leetcode_id": 215, "difficulty": "Medium"},
+          {"title": "Sort an Array", "leetcode_id": 912, "difficulty": "Medium"}
+        ],
+        "additional_problems": [
+          {"title": "Kth Largest Element in an Array", "leetcode_id": 215, "difficulty": "Medium"},
+          {"title": "Sort Colors", "leetcode_id": 75, "difficulty": "Medium"},
+          {"title": "Sort List", "leetcode_id": 148, "difficulty": "Medium"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of core problems (24/30) to unlock Level 4."
+  },
+  {
+    "level": 4,
+    "name": "Intermediate Data Structures & Algorithms",
+    "description": "Explore graph traversal, greedy algorithms, and advanced sorting techniques.",
+    "topics": [
+      {
+        "name": "Heaps",
+        "problems": [
+          {"title": "Kth Largest Element in a Stream", "leetcode_id": 703, "difficulty": "Easy"},
+          {"title": "Last Stone Weight", "leetcode_id": 1046, "difficulty": "Easy"},
+          {"title": "K Closest Points to Origin", "leetcode_id": 973, "difficulty": "Medium"},
+          {"title": "Task Scheduler", "leetcode_id": 621, "difficulty": "Medium"},
+          {"title": "Find Median from Data Stream", "leetcode_id": 295, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Reorganize String", "leetcode_id": 767, "difficulty": "Medium"},
+          {"title": "Rearrange String k Distance Apart", "leetcode_id": 358, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Graphs (DFS/BFS)",
+        "problems": [
+          {"title": "Number of Islands", "leetcode_id": 200, "difficulty": "Medium"},
+          {"title": "Clone Graph", "leetcode_id": 133, "difficulty": "Medium"},
+          {"title": "Course Schedule", "leetcode_id": 207, "difficulty": "Medium"},
+          {"title": "Rotting Oranges", "leetcode_id": 994, "difficulty": "Medium"},
+          {"title": "Word Ladder", "leetcode_id": 127, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Max Area of Island", "leetcode_id": 695, "difficulty": "Medium"},
+          {"title": "Pacific Atlantic Water Flow", "leetcode_id": 417, "difficulty": "Medium"},
+          {"title": "Making A Large Island", "leetcode_id": 827, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Backtracking",
+        "problems": [
+          {"title": "Subsets", "leetcode_id": 78, "difficulty": "Medium"},
+          {"title": "Palindrome Partitioning", "leetcode_id": 131, "difficulty": "Medium"},
+          {"title": "Combination Sum II", "leetcode_id": 40,  "difficulty": "Hard"},
+          {"title": "Word Search", "leetcode_id": 79, "difficulty": "Medium"},
+          {"title": "Restore IP Addresses", "leetcode_id": 93, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Greedy Algorithms",
+        "problems": [
+          {"title": "Assign Cookies", "leetcode_id": 455, "difficulty": "Easy"},
+          {"title": "Lemonade Change", "leetcode_id": 860, "difficulty": "Easy"},
+          {"title": "Jump Game", "leetcode_id": 55, "difficulty": "Medium"},
+          {"title": "Minimum Add to Make Parentheses Valid", "leetcode_id": 921, "difficulty": "Medium"},
+          {"title": "Candy", "leetcode_id": 135, "difficulty": "Hard"},
+          {"title": "Queue Reconstruction by Height", "leetcode_id": 406, "difficulty": "Medium"},
+          {"title": "Minimum Number of Arrows to Burst Balloons", "leetcode_id": 452, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Merge/Quick Sort",
+        "problems": [
+          {"title": "Sort an Array", "leetcode_id": 912, "difficulty": "Medium"},
+          {"title": "Count of Smaller Numbers After Self", "leetcode_id": 315, "difficulty": "Hard"},
+          {"title": "Reverse Pairs", "leetcode_id": 493, "difficulty": "Hard"},
+          {"title": "Sort List", "leetcode_id": 148, "difficulty": "Medium"},
+          {"title": "Maximum Gap", "leetcode_id": 164, "difficulty": "Hard"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of problems (30/38) to unlock Level 5."
+  },
+  {
+    "level": 5,
+    "name": "Advanced Topics",
+    "description": "Master dynamic programming, tries, segment trees, and advanced graph algorithms.",
+    "topics": [
+      {
+        "name": "Dynamic Programming",
+        "problems": [
+          {"title": "House Robber", "leetcode_id": 198, "difficulty": "Medium"},
+          {"title": "Longest Increasing Subsequence", "leetcode_id": 300, "difficulty": "Medium"},
+          {"title": "Coin Change", "leetcode_id": 322, "difficulty": "Medium"},
+          {"title": "Partition Equal Subset Sum", "leetcode_id": 416, "difficulty": "Medium"},
+          {"title": "Edit Distance", "leetcode_id": 72, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Longest Palindromic Substring", "leetcode_id": 5, "difficulty": "Medium"},
+          {"title": "Word Break", "leetcode_id": 139, "difficulty": "Medium"},
+          {"title": "Burst Balloons", "leetcode_id": 312, "difficulty": "Hard"},
+          {"title": "Regular Expression Matching", "leetcode_id": 10, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Tries",
+        "problems": [
+          {"title": "Implement Trie (Prefix Tree)", "leetcode_id": 208, "difficulty": "Medium"},
+          {"title": "Design Add and Search Words Data Structure", "leetcode_id": 211, "difficulty": "Medium"},
+          {"title": "Word Search II", "leetcode_id": 212, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Longest Word in Dictionary", "leetcode_id": 720, "difficulty": "Medium"},
+          {"title": "Replace Words", "leetcode_id": 648, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Segment Trees",
+        "problems": [
+          {"title": "Range Sum Query - Mutable", "leetcode_id": 307, "difficulty": "Medium"},
+          {"title": "Count of Range Sum", "leetcode_id": 327, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Advanced Graph Algorithms",
+        "problems": [
+          {"title": "Network Delay Time", "leetcode_id": 743, "difficulty": "Medium"},
+          {"title": "Cheapest Flights Within K Stops", "leetcode_id": 787, "difficulty": "Medium"},
+          {"title": "Swim in Rising Water", "leetcode_id": 778, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Reconstruct Itinerary", "leetcode_id": 332, "difficulty": "Hard"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of problems (12/15) to unlock Level 6."
+  },
+  {
+    "level": 6,
+    "name": "Expert/Interview-Specific",
+    "description": "Tackle system design, complex bit manipulation, and elite-level problems.",
+    "topics": [
+      {
+        "name": "System Design",
+        "problems": [
+          {"title": "Design Twitter", "leetcode_id": 355, "difficulty": "Hard"},
+          {"title": "Design Underground System", "leetcode_id": 1396, "difficulty": "Medium"},
+          {"title": "Design Browser History", "leetcode_id": 1472, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Topological Sort",
+        "problems": [
+          {"title": "Course Schedule II", "leetcode_id": 210, "difficulty": "Medium"},
+          {"title": "Alien Dictionary", "leetcode_id": 269, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Minimum Height Trees", "leetcode_id": 310, "difficulty": "Medium"},
+          {"title": "Sort Items by Groups Respecting Dependencies", "leetcode_id": 1203, "difficulty": "Hard"}
+        ]
+      },
+      {
+        "name": "Bit Manipulation",
+        "problems": [
+          {"title": "Single Number", "leetcode_id": 136, "difficulty": "Easy"},
+          {"title": "Number of 1 Bits", "leetcode_id": 191, "difficulty": "Easy"},
+          {"title": "Reverse Bits", "leetcode_id": 190, "difficulty": "Easy"},
+          {"title": "Divide Two Integers", "leetcode_id": 29, "difficulty": "Medium"},
+          {"title": "UTF-8 Validation", "leetcode_id": 393, "difficulty": "Medium"}
+        ],
+        "additional_problems": [
+          {"title": "Sum of Two Integers", "leetcode_id": 371, "difficulty": "Medium"},
+          {"title": "Bitwise AND of Numbers Range", "leetcode_id": 201, "difficulty": "Medium"},
+          {"title": "Gray Code", "leetcode_id": 89, "difficulty": "Medium"}
+        ]
+      },
+      {
+        "name": "Hard LeetCode Problems",
+        "problems": [
+          {"title": "Regular Expression Matching", "leetcode_id": 10, "difficulty": "Hard"},
+          {"title": "Trapping Rain Water II", "leetcode_id": 407, "difficulty": "Hard"},
+          {"title": "N-Queens II", "leetcode_id": 52, "difficulty": "Hard"}
+        ],
+        "additional_problems": [
+          {"title": "Median of Two Sorted Arrays", "leetcode_id": 4, "difficulty": "Hard"},
+          {"title": "Merge k Sorted Lists", "leetcode_id": 23, "difficulty": "Hard"},
+          {"title": "First Missing Positive", "leetcode_id": 41, "difficulty": "Hard"}
+        ]
+      }
+    ],
+    "completion_criteria": "Solve 80% of problems (10/13) to achieve mastery."
+  }
+]
