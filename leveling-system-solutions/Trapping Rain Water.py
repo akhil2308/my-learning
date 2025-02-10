@@ -22,7 +22,7 @@ class Solution:
         return water
 
 
-
+"""
 Below is an explanation of how the two‑pointer solution executes step by step. We'll use a concrete example to illustrate the flow. Suppose our input is:
 
 ```python
@@ -149,3 +149,4 @@ At this point, `left` equals `right` (both are 5), so the loop terminates.
   We move the pointer from the side that currently has the lower height because that side is the limiting factor for the water level at that point.
 
 This step-by-step execution should help you see how the algorithm progresses through the array and accumulates the total trapped water.
+"""
