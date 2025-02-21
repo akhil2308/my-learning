@@ -17,3 +17,6 @@
 - https://ably.com/topic/websockets
 - https://www.designgurus.io/answers/detail/how-to-understand-websockets-and-real-time-communication-for-interviews
 - https://medium.com/nerd-for-tech/scaling-websockets-horizontally-a-simple-guide-for-beginners-bf8b06c042f7
+
+#### Conflict Resolution & Synchronization 
+- Operational Transformations (OT) and  Conflict-Free Replicated Data Types (CRDTs)
