@@ -21,8 +21,7 @@
 #### Conflict Resolution & Synchronization 
 - Operational Transformations (OT) and  Conflict-Free Replicated Data Types (CRDTs)
 
-
-
+&nbsp;
 
 ## AWS Deployment Environment Summary for Backend Engineers
 
