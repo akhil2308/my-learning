@@ -8,7 +8,8 @@
 - https://medium.com/@sunny_81705/redis-master-slave-architecture-e730403cb495
 - https://medium.com/@chaewonkong/redis-sentinel-vs-redis-cluster-a-comparative-overview-8c2561d3168f
 
-
+### Database
+- https://estuary.dev/blog/database-sharding/
 
 ### Rate Limiting
 - https://medium.com/fluxninjahq/why-adaptive-rate-limiting-is-a-game-changer-79f130e6ec71
