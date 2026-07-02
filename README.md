@@ -1,7 +1,121 @@
 # My Learning
+
+Personal learning vault: DSA practice, system design, backend engineering, and AI/LLM engineering. Organized as a curriculum, not just a pile of notes.
+
 ---
 
-## Resources
+## Repository Map
+
+```
+├── leveling-system.json          # 6-level gamified LeetCode curriculum
+├── leveling-system-solutions/    # Solved problems (brute-force + optimized versions)
+├── code/                         # DSA technique cheatsheets
+│   └── technique/
+├── system-design/                # System design curriculum
+│   ├── requests/                 # Request management at scale
+│   ├── compute/                  # Scaling compute
+│   ├── data/                     # Distributed data & coordination
+│   └── resilience/               # DR & capacity planning
+├── security/                     # Security curriculum
+├── ai/                           # AI/LLM engineering
+└── python/                       # Python tooling notes
+```
+
+---
+
+## DSA — `code/` + `leveling-system.json`
+
+Techniques (each with the core template, key insights, and mapped LeetCode problems):
+
+| Doc | Covers |
+|---|---|
+| [sliding_window](code/technique/sliding_window.md) | Fixed & variable windows |
+| [two_pointers](code/technique/two_pointers.md) | Converging, fast/slow, two sequences |
+| [prefix_sum](code/technique/prefix_sum.md) | Range queries, prefix + hashmap pattern |
+| [binary_search](code/technique/binary_search.md) | The one template, search-on-answer |
+| [backtracking](code/technique/backtracking.md) | Choose/explore/un-choose, pruning |
+| [heaps](code/technique/heaps.md) | Top-K, k-way merge, two heaps |
+| [dynamic_programming](code/technique/dynamic_programming.md) | Memo vs tabulation, the 5 core patterns |
+| [Permutation](code/Permutation.md) / [combinations](code/combinations.md) | Enumeration foundations |
+
+Practice flow: pick the current level in `leveling-system.json` → solve → keep both versions in `leveling-system-solutions/`.
+
+---
+
+## System Design — `system-design/`
+
+### Reading order (the load-bearing five first)
+
+1. [queueing_theory](system-design/requests/queueing_theory.md) — Little's Law, the utilization hockey stick (*the why behind everything*)
+2. [capacity_estimation](system-design/resilience/capacity_estimation.md) — latency ladder, back-of-envelope method
+3. [consistency_models](system-design/data/consistency_models.md) — CAP/PACELC done properly
+4. [consistent_hashing](system-design/data/consistent_hashing.md) — rings, virtual nodes
+5. [event_driven_kafka](system-design/data/event_driven_kafka.md) — partitions, consumer groups, delivery semantics
+
+Then everything else hangs off those.
+
+### Foundations
+- [What_is_a_Protocol](system-design/What_is_a_Protocol.md) · [load balancer](system-design/load%20balancer.md) · [Messaging models: RabbitMQ/Kafka/ActiveMQ](system-design/Messaging_Models_and_Comparison_RabbitMQ_Kafka_ActiveMQ.md)
+- [caching](system-design/caching.md) — write strategies, stampede/penetration/hot-key
+- [database_scaling](system-design/database_scaling.md) — the ladder: replicas → partitioning → sharding
+- [productionizing](system-design/productionizing.md) — the 13-dimension production-readiness checklist
+
+### `requests/` — request management at scale
+- [rate_limiting](system-design/requests/rate_limiting.md) — algorithms + distributed enforcement
+- [api_gateway](system-design/requests/api_gateway.md) — gateway responsibilities, BFF, mesh vs gateway
+- [backpressure_load_shedding](system-design/requests/backpressure_load_shedding.md) — bounded queues, shedding, adaptive concurrency
+- [connection_management](system-design/requests/connection_management.md) — HTTP/1.1→3, pooling math, TCP gotchas
+- [async_request_patterns](system-design/requests/async_request_patterns.md) — polling vs webhooks vs SSE vs WebSockets
+- [queueing_theory](system-design/requests/queueing_theory.md)
+
+### `compute/` — scaling compute
+- [stateless_design](system-design/compute/stateless_design.md) — where every kind of state goes
+- [horizontal_scaling_autoscaling](system-design/compute/horizontal_scaling_autoscaling.md) — HPA signals, cold starts
+- [serverless_vs_containers](system-design/compute/serverless_vs_containers.md) — the trade-off matrix
+
+### `data/` — distributed data & coordination
+- [consistency_models](system-design/data/consistency_models.md) · [consistent_hashing](system-design/data/consistent_hashing.md)
+- [consensus_and_coordination](system-design/data/consensus_and_coordination.md) — Raft, distributed locks, fencing tokens
+- [distributed_transactions](system-design/data/distributed_transactions.md) — 2PC vs sagas, the outbox pattern
+- [event_driven_kafka](system-design/data/event_driven_kafka.md) — Kafka internals, event sourcing, CQRS
+- [cdn_and_edge](system-design/data/cdn_and_edge.md) — cache-control, edge compute
+- [id_generation](system-design/data/id_generation.md) — UUIDv7, Snowflake, why auto-increment breaks
+- [search_and_analytics](system-design/data/search_and_analytics.md) — inverted indexes, OLTP vs OLAP, columnar
+
+### `resilience/`
+- [multi_region_dr](system-design/resilience/multi_region_dr.md) — RTO/RPO tiers, active-passive vs active-active
+- [capacity_estimation](system-design/resilience/capacity_estimation.md)
+
+### Practice
+- [System Design Challenge Simulator](system-design/System%20Design%20Challenge%20Simulator.md) — LLM prompt that runs progressive design interviews with escalating failure scenarios. **Use it against the docs above.**
+- [my problem](system-design/my%20problem.md) — the original gap analysis this curriculum answers
+
+---
+
+## Security — `security/`
+
+- [authn_authz](security/authn_authz.md) — password hashing, sessions vs JWT, OAuth2/OIDC+PKCE, RBAC→ABAC→ReBAC, the BOLA rule
+- [web_api_attacks](security/web_api_attacks.md) — injection family, XSS, CSRF, SSRF, mass assignment, supply chain (attack→defense table)
+- [infrastructure_security](security/infrastructure_security.md) — practical crypto map, TLS/mTLS, secrets lifecycle, network/container/K8s/cloud hardening
+
+---
+
+## AI / LLM Engineering — `ai/`
+
+- [rag-guide](ai/rag-guide.md) — advanced RAG architecture
+- [llm-fine-tuning](ai/llm-fine-tuning.md) — fine-tuning pipeline
+- [AWQ & GPTQ](ai/AWQ%20&%20GPTQ.md) — quantization
+
+Planned: agent architectures, LLM/agent security (prompt injection, tool-use risks), inference & serving (vLLM, batching, KV cache), evals.
+
+---
+
+## Python — `python/`
+- [ruff-guide](python/ruff-guide)
+
+---
+
+## External Resources
 
 ### Redis
 - https://www.dragonflydb.io/guides/redis-best-practices
@@ -19,8 +133,8 @@
 - https://www.designgurus.io/answers/detail/how-to-understand-websockets-and-real-time-communication-for-interviews
 - https://medium.com/nerd-for-tech/scaling-websockets-horizontally-a-simple-guide-for-beginners-bf8b06c042f7
 
-#### Conflict Resolution & Synchronization 
-- Operational Transformations (OT) and  Conflict-Free Replicated Data Types (CRDTs)
+#### Conflict Resolution & Synchronization
+- Operational Transformations (OT) and Conflict-Free Replicated Data Types (CRDTs) — see [consistency_models](system-design/data/consistency_models.md) for the CRDT context
 
 &nbsp;
 
