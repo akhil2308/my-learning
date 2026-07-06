@@ -102,3 +102,17 @@ Default to **Redis** — the data structures alone (rate limiting with sorted se
 3. Every key gets a TTL. No exceptions.
 4. Measure hit rate — below ~80% for a read-heavy service, revisit key design or TTLs.
 5. The cache must be a **performance layer, not a correctness layer** — the system should survive (degraded) with the cache down.
+
+## Practice Rep (60 min, pass/fail) — Session 20 [INTERVIEW-CRITICAL]
+
+**Reproduce a stampede, then kill it three ways.** Local Redis + FastAPI endpoint backed by a slow "DB" function (500 ms sleep), cache-aside with a 10 s TTL:
+
+1. (15 min) Load with 100 concurrent clients; at a TTL expiry boundary, capture the stampede: count concurrent DB calls in the window (should spike toward 100) and the p99 cliff.
+2. (30 min) Fix it three separate ways, re-measuring DB-call count each time:
+   a. **Lock/singleflight:** first miss takes a Redis `SET NX` lock and rebuilds; others serve stale or wait.
+   b. **TTL jitter:** `ttl = 10 + random(0,3)` across keys — show it helps many-keys expiry alignment but NOT the single-hot-key case (measure and say so).
+   c. **Refresh-ahead:** background task refreshes the key at TTL−2 s; expiry never happens on the request path.
+3. (15 min) Write the decision note: which fix you'd ship for (i) one hot key, (ii) thousands of keys expiring together, (iii) a cache that must never serve stale.
+
+**Pass:** stampede captured with numbers (concurrent DB calls before/after); all three fixes measurably cap DB calls (lock: ~1 per expiry; refresh-ahead: 0 on request path); decision note matches fix properties.
+**Fail:** jitter presented as a hot-key fix, or "it feels faster" without the DB-call counts.

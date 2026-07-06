@@ -88,3 +88,16 @@ DB connections: 10 pods × pool 20 = 200 > Postgres default max 100 → PgBounce
 
 ## Related
 - `../requests/queueing_theory.md` (why the headroom), `../database_scaling.md`, `../data/cdn_and_edge.md`, `../System Design Challenge Simulator.md` (practice these numbers there)
+
+## Practice Rep (60 min, pass/fail) — Session 22 [INTERVIEW-CRITICAL]
+
+**Three timed estimates, five minutes each, out loud, recorded.** Use the 5-step method; no calculator beyond rough powers of ten:
+
+1. **Instagram-scale photo upload:** 500M DAU, 10% post 1 photo/day, 2 MB avg → uploads/s, storage/year, bandwidth at peak (×5).
+2. **Your rate limiter (session 23):** 50k RPS API, token bucket per key in Redis → Redis ops/s, memory for 10M active keys (~100 B/bucket), shard count at 100k ops/s/instance.
+3. **WhatsApp-scale message fan-out:** 2B messages/day → messages/s avg and peak, connection-server count at 500k idle conns/box, delivery-receipt amplification (×3).
+
+Then 10 min: check each against the anchors in this doc (requests/s per server, storage ladder) and mark where you were >10× off.
+
+**Pass:** all three completed inside 5 min each with assumptions stated *before* arithmetic; final numbers within 10× of reference (uploads ~600/s avg, ~35 TB/day photos, limiter ~1 GB + 1 shard headroom→2, messages ~23k/s avg); each ends with an architectural conclusion ("fits N boxes"), not a bare number.
+**Fail:** any estimate that starts computing before stating assumptions, or a result presented without the so-what conclusion.

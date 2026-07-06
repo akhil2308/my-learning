@@ -73,3 +73,14 @@ must be  <  Postgres max_connections (default 100!) with headroom
 
 ## Related
 - `async_request_patterns.md`, `queueing_theory.md`, `../../system-design/productionizing.md` §7 (pool sizing)
+
+## Practice Rep (60 min, pass/fail) — Session 9 [INTERVIEW-CRITICAL]
+
+Demonstrate the two failure modes this doc describes, with numbers:
+
+1. **Pool exhaustion:** FastAPI app calling a slow upstream (local endpoint with `asyncio.sleep(2)`) through a shared `httpx.AsyncClient(limits=Limits(max_connections=5))`. Fire 50 concurrent requests; measure p50/p99 and where requests spend time (pool wait vs upstream). Then raise the limit to 50 and remeasure. Write the two-line explanation using Little's Law (concurrency = RPS × latency).
+2. **New-connection tax:** same 50 requests with a *fresh* `AsyncClient` per request (anti-pattern) vs the shared client against an HTTPS endpoint — measure the handshake overhead difference (`time_appconnect` thinking from `fundamentals/networking/tcp_request_walkthrough.md`).
+3. **HOL blocking (conceptual check):** in ≤5 sentences, explain which head-of-line blocking HTTP/2 fixes and which it cannot (TCP-level), and what HTTP/3 changes.
+
+**Pass:** both measurements recorded with the pool-wait vs upstream-time attribution correct; HOL answer distinguishes stream-level from transport-level blocking.
+**Fail:** any measurement skipped, or HOL answer conflates the two layers.

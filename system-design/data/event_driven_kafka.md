@@ -54,3 +54,15 @@ Simple task distribution (send email, resize image) with no replay/ordering/fan-
 
 ## Related
 - `../Messaging_Models_and_Comparison_RabbitMQ_Kafka_ActiveMQ.md`, `distributed_transactions.md` (outbox), `consistency_models.md`, `id_generation.md` (event IDs)
+
+## Practice Rep (60 min, pass/fail) — Session 21 [INTERVIEW-CRITICAL]
+*Covers this doc + `../Messaging_Models_and_Comparison_RabbitMQ_Kafka_ActiveMQ.md` in one rep.*
+
+**The delivery-semantics drill.** Local Kafka (`docker compose` single broker) or pen-and-paper if time-boxed — the graded artifact is written either way:
+
+1. (25 min) Design (diagram + notes) a consumer for `order-events` that achieves **at-least-once delivery with exactly-once effect**: manual offset commit *after* processing, idempotent handler keyed by event ID (`idempotency_retries.md`), DLQ after N failures. Annotate the two crash windows (before commit → redelivery → dedupe catches it; after processing before commit → same) and why commit-*before*-processing silently loses messages.
+2. (20 min) The rebalance question: what happens to in-flight messages when a consumer joins/leaves the group? Where can duplicates come from even with correct commits? (Answer must involve partition reassignment + redelivery of uncommitted offsets.)
+3. (15 min) Quiz yourself in writing, one paragraph each: (a) when does per-key ordering break (repartitioning, key change, retries out of band)? (b) Kafka vs RabbitMQ for: email sending; audit log with replay; 50k msg/s clickstream — pick and justify via the "when NOT to Kafka" section.
+
+**Pass:** both crash windows annotated correctly; rebalance answer names uncommitted-offset redelivery; 3/3 quiz picks match the doc's decision logic with reasons.
+**Fail:** a design that commits offsets before processing, or ordering claims that ignore repartitioning.

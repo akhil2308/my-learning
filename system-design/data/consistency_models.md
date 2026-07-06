@@ -70,3 +70,21 @@ Accepting writes on both sides of a partition ⇒ conflicting versions to reconc
 
 ## Related
 - `../database_scaling.md` (replication lag), `consensus_and_coordination.md`, `distributed_transactions.md`, `../resilience/multi_region_dr.md`
+
+## Practice Rep (60 min, pass/fail) — Session 17 [INTERVIEW-CRITICAL]
+
+**The classification drill.** For each feature below, write: required consistency model (linearizable / causal / read-your-writes / monotonic reads / eventual), the *anomaly you're accepting*, and one sentence on why users won't notice (or why you can't accept it). ≤4 minutes each, written:
+
+1. Bank account balance shown after a transfer
+2. Instagram like-count
+3. Your own profile edit, viewed immediately after saving
+4. A group-chat thread (replies vs original)
+5. Inventory decrement at checkout for the last unit
+6. CI pipeline status badge
+7. Collaborative doc cursor positions
+8. Password change → all sessions must see it
+
+Then map each to *mechanism* in your default stack (primary read / replica read / quorum / cache TTL / Kafka partition ordering).
+
+**Pass:** all 8 classified with anomaly named; ≥6 match the reference reasoning (1: linearizable-ish per-account, 2: eventual, 3: read-your-writes, 4: causal, 5: linearizable/atomic, 6: monotonic reads is enough, 7: eventual, 8: linearizable revocation); every row names a mechanism, not just a model.
+**Fail:** any row that says "eventual consistency" without a named anomaly — the exact interview mistake this doc warns against.
