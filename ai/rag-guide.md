@@ -488,3 +488,17 @@ This is how Advanced RAG combines them:
 **Resources**
 * links : https://www.youtube.com/watch?v=swvzKSOEluc
 * link: https://humanloop.com/blog/rag-architectures
+
+## Practice Rep (60 min, pass/fail) — Session 33 [INTERVIEW-CRITICAL]
+
+**Defend your RAG design against 6 adversarial questions — written, 8 min each.** Answer as if to a skeptical staff engineer:
+
+1. "Your retrieval quality is bad. How do you *know* whether it's retrieval or generation?" (funnel + recall@k per stage, `../../system-design/designs/ai_system_design_stories.md`)
+2. "Why HyDE / multi-query / contextual compression — what does each buy and what does each cost?"
+3. "A doc was deleted for compliance but still gets cited. Which component failed?"
+4. "You upgraded the embedding model. Walk the migration without downtime or mixed-space corruption."
+5. "Chunking strategy — defend yours, and show the failure mode of naive fixed-size chunking."
+6. "At 10M docs, what's your index and its memory footprint?" (numbers)
+
+**Pass:** all 6 answered; #1 gives a measurable per-stage diagnosis (not "improve the prompt"); #4 is a blue/green versioned reindex (never in-place); #6 has an actual GB figure with the arithmetic.
+**Fail:** any answer that resolves a retrieval problem by tweaking the generation prompt, or an embedding migration done in place.

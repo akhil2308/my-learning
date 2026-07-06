@@ -102,3 +102,14 @@ Tool arguments are attacker-influenceable: schema-validate (Pydantic — your in
 
 ## Related
 - `../security/web_api_attacks.md` (validation, SSRF — agents that fetch URLs inherit it), `../security/authn_authz.md` (the tool layer IS an authz layer), `rag-guide.md`
+
+## Practice Rep (60 min, pass/fail) — Session 34 [INTERVIEW-CRITICAL]
+
+**Lethal-trifecta audit of one of your real agents, with a written verdict.**
+
+1. (25 min) Enumerate the agent's capabilities across the three trifecta legs: (a) access to private data, (b) exposure to untrusted content, (c) ability to externally communicate/act. Draw the current state — how many legs are simultaneously present on any single path?
+2. (25 min) For each path where all three co-occur, write the *architectural* mitigation (remove a leg by config: scope tools, gate on human approval, sandbox, template-only outputs) — not a prompt-based one. State explicitly why prompt-level defenses are insufficient here.
+3. (10 min) Write the verdict: current risk rating, the one change that most reduces blast radius, and what you'd monitor (`../inference/cost_engineering.md` denial-of-wallet included).
+
+**Pass:** every all-three-legs path identified and given an architectural (config/topology) mitigation; the "prompts can't fix this" argument stated; verdict names a single highest-leverage change.
+**Fail:** any mitigation that is "add an instruction telling the model not to," or missing a path where all three legs co-occur.
