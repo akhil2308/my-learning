@@ -93,3 +93,16 @@ Maintain a max-heap of the smaller half and a min-heap of the larger half, kept 
 - Merge k Sorted Lists (23) — Hard
 - Find Median from Data Stream (295) — Hard
 - Meeting Rooms II (253) — Medium
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **973 K Closest Points to Origin (Medium, 25 min)**.
+
+The senior move: a **max-heap of size k** (negate distances in Python's min-heap `heapq`), push-then-pop past k — O(n log k), not "sort everything" O(n log n). Skip the sqrt; comparing squared distances orders identically.
+
+**Pass:** accepted within 25 min, ≤2 submissions, heap bounded at size k, no sqrt, and you can state the complexity difference vs sorting without pausing.
+**Fail:** timer expires, `sorted(points, key=...)[:k]` (correct but it's not the rep — the rep is the bounded heap), or negation bugs found by submitting.
+
+Rotation (next warmup cycles): 621 Task Scheduler → 703 (Easy, 15 min) → 347 → 295 (Hard, two-heaps — allow 35 min). From [leveling-system.json](../../leveling-system.json) Levels 1 & 4.

@@ -114,3 +114,16 @@ Exponential by nature — `O(2^n)` for subsets, `O(n!)` for permutations. Prunin
 - Word Search (79) — Medium
 - Palindrome Partitioning (131) — Medium
 - N-Queens (51) — Hard
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **79 Word Search (Medium, 25 min)**.
+
+Choose/explore/un-choose on a grid: mark the cell (`board[r][c] = '#'`), recurse on 4 neighbors for the next char, restore the cell. The restore line is the un-choose — forget it and cells stay burned across sibling paths, and you'll return false on boards that clearly contain the word.
+
+**Pass:** accepted within 25 min, ≤2 submissions, mutate-and-restore (no `visited` set copied per call), base case checks `index == len(word)` not the last char.
+**Fail:** timer expires, TLE from copying state per recursion, or the restore line was added after a wrong answer instead of written with the mark line as a pair.
+
+Rotation (next warmup cycles): 78 → 131 → 93. From [leveling-system.json](../../leveling-system.json) Level 4.

@@ -94,3 +94,14 @@ At every `mid`, at least one half is properly sorted. Check which half is sorted
 - Find Peak Element (162) — Medium
 - Median of Two Sorted Arrays (4) — Hard
 - Split Array Largest Sum (410) — Hard
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **875 Koko Eating Bananas (Medium, 25 min)** — search-on-answer, the variant interviews actually test. The array you're searching is imaginary: candidate speeds 1..max(piles), monotonic feasibility check `hours(speed) <= h`.
+
+**Pass:** accepted within 25 min, ≤2 submissions, using the one template from this doc (`lo < hi`, `hi = mid` on feasible), and you can say out loud what makes the predicate monotonic.
+**Fail:** timer expires, an infinite loop from mixing templates, or `ceil` division hand-rolled wrong (`-(-p // speed)` or `math.ceil` — pick one and know it).
+
+Rotation (next warmup cycles): 33 → 162 → 34 → 4 (Hard — allow 35 min, once the Mediums are clean).

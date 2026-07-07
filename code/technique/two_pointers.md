@@ -94,3 +94,14 @@ Sliding window is a special case of same-direction two pointers where the region
 - 3Sum (15) — Medium
 - Container With Most Water (11) — Medium
 - Trapping Rain Water (42) — Hard
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **19 Remove Nth Node From End of List (Medium, 25 min)** — this is the fast/slow pattern on a linked list, which is just two pointers with a head start. Gap the fast pointer by n+1 from a dummy node; when fast hits null, slow sits before the victim.
+
+**Pass:** accepted within 25 min, ≤2 submissions, one pass over the list (no length-count-then-second-pass), dummy node used so deleting the head isn't a special case.
+**Fail:** timer expires, two passes, or an off-by-one you found by submitting instead of by tracing.
+
+Rotation (next warmup cycles): 15 3Sum → 141 Linked List Cycle (Easy, 15 min) → 11 Container With Most Water → 206 Reverse Linked List (Easy, 15 min). Converging-array and fast/slow-list problems alternate on purpose — same technique, two costumes. IDs from [leveling-system.json](../../leveling-system.json) Levels 2–3.
