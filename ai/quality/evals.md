@@ -37,3 +37,15 @@ Public benchmarks (MMLU etc.) rank *models*; they say nothing about *your task* 
 
 ## Related
 - `prompt_engineering.md` (evals are its other half), `llm_observability.md` (production feedback loop), `hallucination_grounding.md` (faithfulness metrics)
+
+## Practice Rep (60 min, pass/fail) — Session 31 [INTERVIEW-CRITICAL]
+*Bundles this doc + `llm_observability.md`.*
+
+**Design the eval set + trace schema for one of your real agents** (IRIS/RAPID/supervisor). Produce a `evals/` spec doc:
+
+1. **Golden set (20 min):** 15+ cases spanning happy path, known failure modes, and 3 real production incidents turned into regression cases (the flywheel from `llm_observability.md`). Each case: input, expected behavior, grader tier (exact / LLM-judge rubric / human).
+2. **Grader design (20 min):** for the LLM-judge cases, write the actual rubric prompt and name the judge's own failure modes you'll guard against (position bias, verbosity bias, self-preference) + how you'll calibrate it (human-labeled disagreement set).
+3. **Trace schema (20 min):** define what every task logs (steps, retrieval sets + scores, tokens, tool calls, latency per step) such that a prod failure is replayable as a golden case. Name the offline-gate vs online-monitor split and the deploy gate threshold.
+
+**Pass:** ≥15 cases with ≥3 from real incidents; judge rubric written (not described) with named biases + calibration plan; trace schema makes a failure replayable (a reviewer could reconstruct the incident from the fields).
+**Fail:** golden set is all happy-path, or "LLM judges it" with no rubric and no calibration story.

@@ -84,3 +84,14 @@ Delivery becomes **at-least-once** → consumers dedupe on event ID (idempotency
 
 ## Related
 - `event_driven_kafka.md`, `consensus_and_coordination.md`, `consistency_models.md` (visible intermediate states = a consistency model choice), `../../system-design/productionizing.md` §8
+
+## Practice Rep (60 min, pass/fail) — Session 19 [INTERVIEW-CRITICAL]
+
+**Convert a 3-service flow to saga + outbox, on a whiteboard, with compensation.** The flow: place order → charge payment → reserve inventory → confirm.
+
+1. (25 min) Draw the orchestrated saga: state machine states, per-step outbox events (`../data/idempotency_retries.md` mechanics), and — the graded part — **compensation paths for a failure at every step** (payment fails; inventory fails *after* charge; confirmation service down). Mark which compensations are retryable vs terminal.
+2. (15 min) Annotate the anomaly window: name the intermediate state a user can observe (charged-but-not-reserved), how long it lasts, and the product mitigation (pending status, not silent).
+3. (15 min) Write the "why not 2PC" paragraph: blocking on coordinator failure, locks held across services, availability coupling — and the one case you'd still accept it (single distributed DB doing it transparently).
+
+**Pass:** every failure point has a drawn compensation or explicit "park for human" path; the charged-but-not-reserved window is named with mitigation; 2PC paragraph gives the blocking argument precisely.
+**Fail:** a saga where compensation is hand-waved ("we refund somehow"), or no observable-intermediate-state acknowledged — that's the whole trade being ignored.

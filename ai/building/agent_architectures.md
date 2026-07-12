@@ -51,3 +51,12 @@ The costs (learned the hard way — see the SupervisorNode debugging history):
 
 ## Related
 - `tool_use.md`, `agent_memory.md`, `../emerging/context_engineering.md`, `../llm_agent_security.md`
+
+## Practice Rep (60 min, pass/fail) — Session 32 [INTERVIEW-CRITICAL]
+
+**Narrate your supervisor-orchestration design vs alternatives — 10 min recorded, twice.** Cold prompt: "Walk me through a multi-agent system you built and why it's shaped that way."
+
+Must contain: the guarantee-first opening (durable/auditable/budget-bounded, `../../system-design/designs/ai_system_design_stories.md`); why supervisor/worker over a single ReAct loop OR a fixed pipeline (name what each alternative would have cost you); the state/checkpointing decision; how worker output is treated as untrusted input; and ONE scar (a decision that bit you + your new default — maps to a `../../interview/star_story_bank.md` slot).
+
+**Pass:** both recordings ≤11 min; alternatives named with concrete costs (not "it's more flexible"); the untrusted-worker-output point present; exactly one scar with a changed default.
+**Fail:** project biography for >90 s before reaching a decision, or "supervisor because it's best practice" with no alternative comparison.

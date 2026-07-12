@@ -147,3 +147,19 @@ Most real compromises arrive through a dependency, not your code.
 | Brute force / stuffing | Rate limits + lockouts + breach lists |
 | Open redirect | Allowlist `next=` targets |
 | Supply chain | Lock files + continuous scanning |
+
+## Practice Rep (60 min, pass/fail) — Session 29 [INTERVIEW-CRITICAL]
+
+**Fix five seeded vulns in one FastAPI file.** Create `vuln_app.py` containing these five endpoints, then fix each and prove the exploit dead:
+
+1. Raw-SQL search: `f"SELECT * FROM users WHERE name LIKE '%{q}%'"` → exploit with `' OR '1'='1`, fix with parameterization, re-run exploit.
+2. IDOR: `GET /invoices/{id}` with no ownership check → demonstrate cross-user read with two test users, fix with owner filter in the query itself.
+3. Mass assignment: `User(**payload)` accepting `is_admin`
+## Practice Rep (60 min, pass/fail) — Session 29 [INTERVIEW-CRITICAL]
+
+**Fix five seeded vulns in a real FastAPI file.** Create `vuln_app.py` with these planted (or use any you've seen): (1) raw SQL f-string in a query; (2) mass-assignment (`User(**request_body)` letting `is_admin` through); (3) IDOR — `GET /orders/{id}` with no ownership check; (4) SSRF — a `fetch_url` endpoint taking arbitrary URLs; (5) missing rate limit on `/login` enabling credential stuffing.
+
+For each: write the exploit (the curl that abuses it) as a comment, then the fix, then a one-line assertion-style test that fails on the vuln and passes on the fix.
+
+**Pass:** all 5 exploits written as working curls, all 5 fixed, all 5 mini-tests present and passing against the fixed version; the IDOR fix is an ownership check (not just auth), the SSRF fix is an allowlist (not a blocklist).
+**Fail:** any fix that's cosmetic (e.g., SSRF "fixed" by blocking `localhost` string — trivially bypassed), or mass-assignment "fixed" without an explicit field allowlist / response model.

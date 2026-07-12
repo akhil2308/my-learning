@@ -119,3 +119,16 @@ Output: Longest substring = `"abc"`, length = `3`.
 ---
 
 Let me know if you need more examples or clarification on any part! 😊
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **424 Longest Repeating Character Replacement (Medium, 25 min)**.
+
+The trap this rep exists to catch: the window never needs to shrink below its best size — `if window_len - max_freq > k` slides (doesn't shrink) the window. If you wrote a while-loop shrink and it still passed, you don't understand *why* it passed — that's a fail.
+
+**Pass:** accepted on LeetCode within 25 min, ≤2 submissions, and you can state in one sentence why the non-shrinking window is still correct.
+**Fail:** timer expires, 3+ submissions, or you can't explain the max_freq trick without re-reading the editorial.
+
+Rotation (next warmup cycles, same rules): 3 → 567 → 209 → 1004. All from [leveling-system.json](../../leveling-system.json) Level 2.

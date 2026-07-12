@@ -49,3 +49,13 @@ Fewer bits per weight → less memory *and* faster decode (bandwidth-bound ⇒ f
 
 ## Related
 - `serving_throughput.md`, `cost_engineering.md`, `../foundations/transformers_attention.md`, `../AWQ & GPTQ.md`
+
+## Practice Rep (60 min, pass/fail) — Session 30 [INTERVIEW-CRITICAL]
+*Bundles this doc + `serving_throughput.md` + `cost_engineering.md` into one economics rep.*
+
+**Build the cost/latency model for a concrete agent workload** (spreadsheet or a `cost_model.py`). Given: an agent doing 8 LLM calls/task, avg 4k input + 500 output tokens/call, 60% of input cacheable (stable system prompt + tools), 100k tasks/day, using a frontier model at posted prices.
+
+Compute: (1) tokens/day in and out; (2) cost/day naive; (3) cost/day with prompt caching on the cacheable portion; (4) the savings % and where it comes from (`cost_engineering.md` levers); (5) TTFT vs total latency split (prefill vs decode, `inference_internals.md`) and which lever helps which; (6) at what QPS you'd self-host and what breaks even (utilization, `serving_throughput.md`).
+
+**Pass:** all 6 numbers derived with stated assumptions; caching savings correctly attributed to input-token reduction on the cached fraction; you can say which optimization cuts TTFT (prefill/caching) vs throughput (batching) — not conflated.
+**Fail:** output tokens treated as cacheable, or latency levers and cost levers muddled.

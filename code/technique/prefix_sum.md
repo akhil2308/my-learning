@@ -84,3 +84,16 @@ def subarray_sum(nums, k):
 - Subarray Sum Equals K (560) — Medium
 - Continuous Subarray Sum (523) — Medium
 - Product of the Last K Numbers (1352) — Medium
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **560 Subarray Sum Equals K (Medium, 25 min)**.
+
+This is *the* prefix-sum interview problem because it fuses the technique with a hashmap: count of subarrays = for each running sum `s`, how many earlier prefixes equal `s - k`. The load-bearing line is seeding `{0: 1}` — miss it and every subarray starting at index 0 vanishes.
+
+**Pass:** accepted within 25 min, ≤2 submissions, O(n) single pass, and the `{0: 1}` seed was in your first draft (not patched in after a wrong answer).
+**Fail:** timer expires, O(n²) nested loops, or the seed was debugged in rather than reasoned in.
+
+Rotation (next warmup cycles): 238 → 523 → 525. From [leveling-system.json](../../leveling-system.json) Levels 1–2.

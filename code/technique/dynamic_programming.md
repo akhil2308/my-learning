@@ -111,3 +111,16 @@ Edit Distance (72) is this same grid with different transitions.
 - Longest Common Subsequence (1143) — Medium
 - Edit Distance (72) — Medium
 - Partition Equal Subset Sum (416) — Medium
+
+---
+
+## Practice Rep (25 min, pass/fail) — Timed Warmup
+
+One problem, one timer, no notes: **322 Coin Change (Medium, 25 min)**.
+
+Unbounded knapsack, bottom-up: `dp[amount] = min(dp[amount - coin] + 1)` over coins, `dp[0] = 0`, infinity elsewhere, answer is `dp[target]` or −1. State the recurrence in English *before* typing — "fewest coins for amount a = 1 + best over each last-coin choice."
+
+**Pass:** accepted within 25 min, ≤2 submissions, recurrence written as a comment before the loop, O(amount × coins) tabulation (no naive recursion TLE).
+**Fail:** timer expires, memoized recursion that blows the stack on amount=10⁴ (know why tabulation dodges it), or the −1 case patched in after a wrong answer.
+
+Rotation (next warmup cycles): 198 → 300 → 416 → 139. From [leveling-system.json](../../leveling-system.json) Level 5.

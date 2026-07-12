@@ -130,3 +130,28 @@ Internal calls need identity too: mTLS (SPIFFE/service mesh) or client-credentia
 - [ ] OAuth: Authorization Code + PKCE only; state + nonce validated
 - [ ] Service-to-service auth exists (mTLS or client credentials)
 - [ ] Rate limiting on login/reset endpoints; enumeration-safe messages
+
+## Practice Rep (60 min, pass/fail) — Session 28 [INTERVIEW-CRITICAL]
+
+1. (25 min) **Blind whiteboard: OAuth2 Authorization Code + PKCE** for a SPA + API — every arrow labeled (who redirects whom, where the code_verifier/code_challenge live, what the token endpoint checks), plus where the refresh token is stored and rotated. Photograph it, then diff against this doc's §4 — mark every missing/wrong arrow.
+2. (20 min) **Spot-the-bug set** — write the vulnerability + fix for each in ≤2 sentences: (a) JWT validated with `algorithms=["HS256","none"]`; (b) access token in localStorage on an XSS-able page; (c) `GET /api/orders/{id}` checking only "is authenticated"; (d) refresh tokens that never rotate; (e) logout that only deletes the client cookie for a stateless JWT; (f) password reset tokens that don't expire on use.
+3. (15 min) Record the 90-second answer to "sessions vs JWT — when each?" including the revocation trade and the hybrid (short JWT + refresh-token rotation with server-side state).
+
+**Pass:** PKCE diagram has ≤2 diffs against the doc; 6/6 bugs named with correct fix class (b = BOLA/IDOR for (c) — object-level check); recording lands the revocation asymmetry.
+**Fail:** PKCE drawn without the verifier/challenge pair doing anything, or (c) answered as "add auth middleware" without the ownership check.
+
+## Practice Rep (60 min, pass/fail) — Session 28 [INTERVIEW-CRITICAL]
+
+1. (20 min) **Whiteboard OAuth2 Authorization Code + PKCE blind**, arrows and all: client → /authorize (code_challenge) → user consent → redirect with code → /token (code_verifier) → tokens. Annotate what PKCE defends against (auth-code interception on public clients) and why the verifier can't be faked.
+2. (25 min) **Spot-the-bug set** — for each snippet/scenario, name the vuln and the fix in one line:
+   a. JWT verified with `algorithms=["HS256","none"]`.
+   b. Access token TTL = 30 days, no revocation.
+   c. Session ID in URL query string.
+   d. `verify=False` / signature not checked, only decoded.
+   e. Role claim trusted from a client-sent JWT the server didn't issue.
+   f. Password reset token = `md5(email)`.
+   g. Refresh token not rotated on use.
+3. (15 min) Write the 4-sentence "sessions vs JWT — when each" answer, including the JWT revocation problem and the standard mitigation (short TTL + refresh + denylist).
+
+**Pass:** PKCE flow drawn correctly with the interception threat named; ≥6/7 bugs correctly identified AND fixed; sessions-vs-JWT answer names the revocation gap.
+**Fail:** the `alg:none` or unverified-signature bug missed (these are disqualifying in a real interview).

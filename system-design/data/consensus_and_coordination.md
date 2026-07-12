@@ -59,3 +59,14 @@ If all contenders share a Postgres anyway, its locks are transactional, deadlock
 
 ## Related
 - `consistency_models.md` (quorums), `../database_scaling.md` (failover/split-brain), `distributed_transactions.md`, `event_driven_kafka.md` (KRaft)
+
+## Practice Rep (60 min, pass/fail) — Session 18 [INTERVIEW-CRITICAL]
+
+**Tell the fencing story until it's yours.** Three artifacts, timed:
+
+1. (20 min) Record yourself, unaided, telling the "distributed lock without fencing" failure end-to-end: client A acquires lock with TTL → GC pause / network partition → TTL expires → B acquires → A wakes and writes → corruption. Then the fix: monotonically increasing fencing token checked by the *resource*, not the lock service. Must include why TTL alone can never be sufficient.
+2. (20 min) Whiteboard leader election for a singleton cron scheduler using a lease (etcd/K8s Lease): acquire, renew, lose, and the zombie-leader window — annotate where "stop acting immediately" happens and what enforces it if the leader doesn't notice.
+3. (15 min) Write the 5-line answer to "what does Raft actually give you?" (a replicated log with a single order, majority-quorum durability, leader-based writes, safety under partition minority, liveness only with majority) — and the 2-line answer to "why don't you write your own?"
+
+**Pass:** recording covers TTL-insufficiency + token-checked-at-resource; lease diagram shows the zombie window explicitly; Raft answer names quorum for both durability and availability.
+**Fail:** fencing story where the *lock service* rejects the stale client (wrong — the resource must), or a Raft answer describing the algorithm's internals instead of its guarantees.
