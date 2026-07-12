@@ -76,6 +76,17 @@ DB connections: 10 pods × pool 20 = 200 > Postgres default max 100 → PgBounce
 ## Memory / Cache Sizing
 "Cache the hot 20%": 500M items × 1KB = 500GB total → hot set ~100GB → a few Redis nodes or one big one. Always compare working-set size to RAM before assuming "we'll cache it."
 
+## Worked Example: GPU Fleet for LLM Serving
+
+**Assume:** internal agent product, 2M requests/day, avg 2,000 input + 300 output tokens, peak 3×; SLOs TTFT < 2s, TPOT < 50ms. Anchor (order-of-magnitude, tune-dependent, like the anchors above): one 8×H100 node serving a 70B-class model under continuous batching ≈ ~10k output tok/s within TPOT SLO, ~30k prefill tok/s (`../../ai/inference/serving_throughput.md`).
+
+```
+Requests: 2M/day ≈ 20 RPS avg → ~60 RPS peak
+Decode:   60 × 300  =  18k output tok/s → 18k/10k ≈ 2 nodes at 100%
+Prefill:  60 × 2000 = 120k input tok/s  → 120k/30k ≈ 4 nodes at 100%  ← binding (input:output ≈ 6.7:1)
+```
+**Conclusions the math forces:** agent workloads are usually **prefill-bound** (long transcripts, short answers) — size on prefill, not decode. 4 nodes at 100% utilization; apply the ~⅔-utilization headroom used above → **~6 nodes to launch on**. From there the real lever is prefix caching, not more GPUs (`../../ai/inference/serving_throughput.md` PagedAttention/RadixAttention): transcripts reshare turns, and a realistic 70% prefix-hit rate cuts *effective* prefill to ~36k tok/s — at that point decode (18k tok/s, ~2 nodes) becomes binding instead, and the fleet should shrink toward 3. Budget the uncached number, expect to scale down once cache hit rate is measured in prod, not assumed. Know which SLO binds: TTFT is a prefill/queueing number, TPOT a decode/batch-size number — growing batches for throughput trades away TPOT (goodput, `../../ai/inference/serving_throughput.md`).
+
 ---
 
 ## Cheat Card

@@ -18,6 +18,9 @@ KV caches allocated as fixed-size **pages** (vs contiguous max-length reservatio
 - ~zero fragmentation → more concurrent sequences per GPU (throughput is a KV-memory game)
 - **Copy-on-write prefix sharing:** requests sharing a prefix (same system prompt; best-of-N sampling from one prompt) share those KV pages physically
 - **SGLang's RadixAttention** generalizes this: an LRU radix tree over *all* recent requests' KV — automatic cross-request prefix caching; huge for agent workloads that re-send growing transcripts
+- **Mooncake** (Moonshot/Kimi) takes prefix caching datacenter-wide: a distributed KV pool across cluster DRAM/SSD, so any node can reuse any node's prefixes
+- Attack the KV size itself: **MLA** (multi-head latent attention, DeepSeek) compresses KV ~10× architecturally — same memory game, solved in the model instead of the allocator
+- Underneath all of it: **FlashAttention** kernels (tiled attention that never materializes the N×N matrix in HBM) — the baseline that makes prefill compute-bound rather than memory-bound in the first place
 
 ## Speculative Decoding
 
@@ -38,7 +41,7 @@ Chasing raw tokens/sec alone produces giant batches that violate latency SLOs �
 
 ## Ops Notes for Self-Hosting
 - **Preemption:** KV memory exhausted mid-flight → some sequence gets evicted/recomputed; visible as mid-stream stalls. Watch the preemption counter; it means you're over-admitting (admission control — `../../system-design/requests/backpressure_load_shedding.md`).
-- **Prefill/decode interference:** a giant incoming prompt's prefill stalls everyone's decode → chunked prefill (interleave) or disaggregated prefill/decode fleets (the frontier pattern).
+- **Prefill/decode interference:** a giant incoming prompt's prefill stalls everyone's decode → chunked prefill (interleave — **Sarathi-Serve**'s idea, now a stock vLLM flag) or disaggregated prefill/decode fleets (**DistServe**/**Splitwise** — the frontier pattern, run at scale by Mooncake).
 - Multi-GPU: tensor parallelism (split layers across GPUs — needs fast interconnect) for models too big for one card; pipeline/expert parallelism at larger scale.
 - Autoscaling LLM pods: scale on queue depth / KV utilization, not CPU (`../../system-design/compute/horizontal_scaling_autoscaling.md`); cold starts are brutal (tens of GB of weights to load) → keep warm pools.
 - Stack choices: **vLLM** (default, ecosystem), **SGLang** (radix cache, structured output speed), **TGI**, **TensorRT-LLM** (NVIDIA-tuned peak perf, more build pain), **llama.cpp/Ollama** (local/CPU/Mac — your M5 runs this class).

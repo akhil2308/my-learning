@@ -249,3 +249,18 @@ Lower priority (post-Aug): `requests/rate_limiting.md`, `requests/backpressure_l
 - **Fast lane:** D (all), E-asyncio, A-cpython/GIL, C-tcp-walkthrough, G (all), H (all), K (all), I rep-appends — these are the highest-frequency senior backend/AI interview topics.
 
 **Awaiting your review before generating `CURRICULUM.md`.**
+
+---
+
+## Addendum — 2026-07-12 gap fixes (pre-Aug-1 scope, additive only)
+
+Done:
+1. ✅ NEW `ai/building/agent_skills_pattern.md` — progressive-disclosure skill folders vs prompt stuffing/fine-tuning; cross-linked to `tool_use.md` + `context_engineering.md`
+2. ✅ `ai/quality/evals.md` — "Agent benchmarks" subsection (SWE-bench execution-verified, tau-bench end-state grading, pass^k vs pass@k)
+3. ✅ `ai/inference/cost_engineering.md` — Lever 1.5: semantic caching (threshold-as-correctness-dial, 20–40% hit rates, LiteLLM/Portkey/Kong)
+4. ✅ `ai/inference/serving_throughput.md` — name-drop pass: DistServe/Splitwise, Sarathi-Serve, Mooncake, FlashAttention, MLA attached to existing concepts
+5. ✅ `system-design/resilience/capacity_estimation.md` — worked GPU-fleet sizing example (tokens/s → nodes, prefill-vs-decode bound, TTFT/TPOT as the binding SLO)
+
+Deferred (post-Aug-1):
+- ❌ `ai/building/event_driven_agents.md` — agents as event consumers/producers, triggers beyond chat, durable-execution patterns
+- ❌ `ai/building/prompt_management.md` — prompt versioning/registries, deploy-vs-code lifecycle, A/B rollout of prompt changes

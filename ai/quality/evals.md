@@ -27,6 +27,12 @@ LLM outputs are high-variance and failure is long-tailed: a prompt that aces you
 
 - **RAG:** evaluate retrieval separately (recall@k, MRR against labeled relevant chunks) from generation (faithfulness-to-context, answer quality) — "retrieval fetched the right chunk but the model ignored it" and "retrieval missed" need different fixes (`../rag-guide.md`, `embeddings` calibration).
 - **Agents:** task-level success (did the whole thing work, judged on final state — e.g., the DB row actually changed) AND step-level metrics (tool selection accuracy, argument validity, steps-to-completion, cost/task). Trajectory evals catch "right answer, horrifying path." Compounding math in `agent_architectures.md` says per-step rates are what you tune.
+### Agent benchmarks (how the field grades the same split)
+- **SWE-bench:** real GitHub issues; the agent's patch must make the repo's held-out tests pass — **execution-verified**, pure code-based grading (tier 1) at the outcome level. The pattern to copy: make success machine-checkable, not judge-adjudicated.
+- **tau-bench:** agent + simulated user + API tools; graded by **comparing final environment state** (the DB) against the goal state — outcome grading that ignores the path, exactly the "did the row actually change" standard above.
+- **pass^k vs pass@k:** pass@k = at least one of k trials succeeds (capability); **pass^k = all k trials succeed (reliability)** — and it decays brutally with k for agents (0.9 per-trial → 0.59 at k=5). Production cares about pass^k; leaderboards report pass@k. Quote the right one.
+- These are outcome benchmarks — pair with the step-level metrics above to *debug* what they flag.
+
 - **Regression discipline:** pin the suite; run on every prompt change, model upgrade, retrieval change; block ship on regressions like any CI gate. Track scores over time — slow drift is real (`llm_observability.md`).
 - Non-determinism: run flaky cases n times, grade pass@k or mean; at temp 0 variance shrinks but doesn't vanish (`../foundations/sampling_decoding.md`).
 

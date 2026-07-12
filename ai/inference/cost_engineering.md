@@ -19,6 +19,12 @@ Instrument per-request tokens/cost with attribution (user, feature, agent, node)
 - **Retrieval discipline:** top-k tight; rerank-then-send-less beats send-everything (`../rag-guide.md`).
 - **Cap output:** `max_tokens` sized to the task; "be concise" instructions; structured outputs with short keys where volume is high.
 
+## Lever 1.5: Semantic Caching (skip the model entirely)
+Different beast from prompt caching below: cache the **full response**, keyed by embedding similarity of the request — "what's your refund policy" and "how do refunds work" hit the same entry. Lives in your gateway, no provider involvement (LiteLLM / Portkey / Kong AI Gateway all ship it as a config flag).
+- Repetitive, question-shaped workloads (support bots, FAQ-style internal tools) see **20–40% hit rates** → those requests cost ~zero and return in milliseconds.
+- **The similarity threshold is a correctness dial, not a perf knob:** too loose → a confidently wrong cached answer to a subtly different question (worse than paying full price); too tight → no hits. Start strict, tune against your eval set (`../quality/evals.md`), and scope cache keys per-tenant so one user's answer never leaks to another.
+- Wrong tool for agent loops — every step's context is unique. That's the next lever's job.
+
 ## Lever 2: Prompt Caching (the biggest single win for agents)
 Providers persist the KV cache of a request's **prefix**; a subsequent request sharing that exact prefix pays ~10% of input price on the cached part (and gets faster TTFT). Mechanics: `inference_internals.md`.
 - **Layout for it:** stable content first (system prompt, tool schemas, reference docs, few-shot), volatile content last. One dynamic value (a timestamp!) early in the prompt destroys all downstream cache hits.
